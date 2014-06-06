@@ -1,4 +1,4 @@
-newslynx-urls
+newslynx-url
 ========
 A newslynx-opinionated collection of utilities for dealing with urls.
 
@@ -21,7 +21,7 @@ This module contains various methods that are used throughout `newslnyx-core`.
 but the main functions are `unshorten_url`, `is_article_url`, and `prepare_url`:
 
 ```python
-from newslynx_urls import (
+from newslynx_url import (
   unshorten_url, is_article_url, prepare_url
 )
 

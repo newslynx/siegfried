@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
 from pip.req import parse_requirements
 
-# install_reqs = [
-#   str(ir.req) for ir in parse_requirements('requirements.txt')
-#   ] 
+install_reqs = [
+  str(ir.req) for ir in parse_requirements('requirements.txt')
+  ] 
 
 setup(
-  name='newslynx-urls',
+  name='newslynx-url',
   version='0.0.1',
   description="tools for parsing, extracting, reconciling, and unshortening urls",
   long_description="",
@@ -26,9 +26,6 @@ setup(
   namespace_packages=[],
   include_package_data=False,
   zip_safe=False,
-  install_requires=[
-    'lxml',
-    'tldextract'
-  ],
+  install_requires=install_reqs,
   tests_require=[]
 )

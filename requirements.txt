@@ -1,2 +1,3 @@
-lxml
-tldextract
+lxml==3.3.5
+tldextract==1.4
+wsgiref==0.1.2
