@@ -24,7 +24,7 @@ except (IOError, ImportError):
 # setup
 setup(
   name='newslynx-url',
-  version='0.0.8',
+  version='0.0.9',
   description="tools for parsing, extracting, reconciling, and unshortening urls",
   long_description = description,
   classifiers=[
