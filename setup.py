@@ -45,8 +45,8 @@ setup(
   zip_safe=False,
   install_requires=[
     "lxml==3.3.5",
-    "tldextract==1.4",
-    "requests"
+    "requests==2.3.0",
+    "tldextract==1.4"
   ],
   tests_require=[]
 )

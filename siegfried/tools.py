@@ -5,13 +5,11 @@
 Most of the code here was extracted from newspaper's module for cleaning urls.
 From: https://github.com/codelucas/newspaper/blob/master/newspaper/urls.py
 """
-
+import requests
 import re
 import tldextract
 import lxml.html 
 from hashlib import sha1
-import httplib
-import requests
 import httplib
 from copy import copy
 from urlparse import (
