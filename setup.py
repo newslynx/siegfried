@@ -28,7 +28,7 @@ install_reqs = [
 # setup
 setup(
   name='newslynx-url',
-  version='0.0.5',
+  version='0.0.6',
   description="tools for parsing, extracting, reconciling, and unshortening urls",
   long_description = description,
   classifiers=[
