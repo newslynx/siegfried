@@ -39,6 +39,14 @@ print is_article(
 )
 # http://towcenter.org/blog/tow-fellows-brian-abelson-and-michael-keller-to-study-the-impact-of-journalism
 
+import re
+pattern = re.compile(r'.*towcenter\.org/blog/.*')
+print is_article(
+  'http://towcenter.org/blog/tow-fellows-brian-abelson-and-michael-keller-to-study-the-impact-of-journalism',
+  pattern = pattern
+)
+# http://towcenter.org/blog/tow-fellows-brian-abelson-and-michael-keller-to-study-the-impact-of-journalism
+
 print prepare_url(
   'http://towcenter.org/blog/tow-fellows-brian-abelson-and-michael-keller-to-study-the-impact-of-journalism/?q=lfjad&f=lkfdjsal'
   )
