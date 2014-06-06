@@ -1,3 +1,4 @@
+![https://travis-ci.org/newslynx/newslynx-url.svg](travis-img)
 newslynx-url
 ========
 A newslynx-opinionated collection of utilities for dealing with urls.
