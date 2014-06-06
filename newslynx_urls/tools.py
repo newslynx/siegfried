@@ -45,20 +45,24 @@ BAD_DOMAINS = [
 class UnshortenError(Exception):
   pass
 
-def urls_from_string(string):
+def urls_from_string(string, dedupe=True):
   """
   get urls from input string
   """
   urls = re_url.findall(string)
   short_urls = [g[0] for g in re_short_url_text.findall(string)]
-  return list(set(urls + short_urls))
+  final_urls = urls + short_urls
+  if dedupe:
+    return list(set(final_urls))
+  else:
+    return final_urls
 
-def urls_from_html(html, domain=None):
+def urls_from_html(html, domain=None, dedupe=True):
   """
   extract urls from html, optionally reconciling
   relative urls
   """
-  urls = set()
+  final_urls = []
 
   tree = lxml.html.fromstring(html)
 
@@ -66,9 +70,13 @@ def urls_from_html(html, domain=None):
     if not is_abs_url(href):
       if domain:
         href = urljoin(domain, href)
-      urls.add(href)
+      final_urls.append(href)
+      
+  if dedupe:
+    return list(set(final_urls))
+  else:
+    return final_urls
 
-  return list(urls)
 
 def remove_args(url, keep_params=(), frags=False):
   """
