@@ -12,6 +12,6 @@ pip install -e newslynx-urls
 ## Test
 requires `nose`
 ```
-nosetests tests
+nosetests
 ```
 

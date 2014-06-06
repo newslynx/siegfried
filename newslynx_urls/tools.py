@@ -50,7 +50,7 @@ def urls_from_string(string):
   get urls from input string
   """
   urls = re_url.findall(string)
-  short_urls = [g[0] for g in re_short_url.findall(string)]
+  short_urls = [g[0] for g in re_short_url_text.findall(string)]
   return list(set(urls + short_urls))
 
 def urls_from_html(html, domain=None):

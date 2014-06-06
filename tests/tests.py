@@ -7,6 +7,44 @@ TEST_DIR = os.path.abspath(os.path.dirname(__file__))
 
 class Tests(unittest.TestCase):
   
+  def test_urls_from_string(self):
+    string = """
+      http://www.nytimes.com/2014/06/06/business/gm-ignition-switch-internal-recall-investigation-report.html?hp&_r=0
+      bitly.com/1870asf
+      http://bitly.com/1870asf
+      http://www.nytimes.com/2014/06/06/business/gm-ignition-switch-internal-recall-investigation-report.html?hp&_r=0
+      """
+    truth = set([
+      "http://bitly.com/1870asf", 
+      "http://www.nytimes.com/2014/06/06/business/gm-ignition-switch-internal-recall-investigation-report.html?hp&_r=0"
+      ])
+    test = set(urls_from_string(string))
+    assert(test == truth)
+
+  def test_urls_from_html(self):
+    html = """
+    <a href="http://enigma.io">Enigma.io</a>
+    <p><a href="http://enigma.io">Enigma.io</a> 
+    is a search engine and API for public data. 
+    We find certain datasets to be especially powerful 
+    because the underlying phenomena they capture 
+    have such a fundamental impact on our world. 
+    Climate affects 
+    <a href="https://app.enigma.io/table/us.gov.usda.fas.psd.psd_alldata">our agricultural production</a>
+    <a href="https://app.enigma.io/table/us.gov.bls.ap.data-2-gasoline-join">the price of gasoline</a>
+    the livelihood of small businesses or 
+    <a href="/search/source/us.gov.dol.oflc.h2a">temporary farm workers</a>, 
+    and ultimately the sustainability of our species on this planet.</p>
+    """
+    truth = set([
+      "http://enigma.io",
+      "https://app.enigma.io/table/us.gov.usda.fas.psd.psd_alldata",
+      "https://app.enigma.io/table/us.gov.bls.ap.data-2-gasoline-join",
+      "https://app.enigma.io/search/source/us.gov.dol.oflc.h2a"
+      ])
+    test = set(urls_from_html(html, domain="https://app.enigma.io/"))
+    assert(test == truth)
+
   def test_get_domain(self):
     case = 'http://www.nytimes.com/2014/06/06/business/gm-ignition-switch-internal-recall-investigation-report.html?hp&_r=0'
     assert(get_domain(case) == 'www.nytimes.com')

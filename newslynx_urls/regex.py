@@ -29,6 +29,16 @@ re_short_url = re.compile(r"""
   )$                      # end group
 """, re.VERBOSE | re.IGNORECASE)
 
+# match a bitly-ish shorturl in text
+re_short_url_text = re.compile(r"""                   
+   (                      # start group
+    (https?://)?          # optional scheme
+    ([a-z1-9]+\.)?        # optional sub domain
+    [a-z1-9]+.[a-z1-9]+/  # required domain
+    [a-z1-9]{5,9}         # six-ish digit hash
+  )                       # end group
+""", re.VERBOSE | re.IGNORECASE)
+
 # remove https / http / .html from url for slugging / hashing 
 re_http = re.compile(r'^http(s)?')
 re_html = re.compile(r'(index\.)?htm(l)?$')
