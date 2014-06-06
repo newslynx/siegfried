@@ -2,7 +2,6 @@ newslynx-url
 ========
 A newslynx-opinionated collection of utilities for dealing with urls.
 
-
 ## Install
 ```
 pip install newslynx-url
