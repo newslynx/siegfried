@@ -20,15 +20,11 @@ try:
 except (IOError, ImportError):
   description = ""
 
-# get requirements
-install_reqs = [
-  str(ir.req) for ir in parse_requirements('requirements.txt')
-  ] 
 
 # setup
 setup(
   name='newslynx-url',
-  version='0.0.7',
+  version='0.0.8',
   description="tools for parsing, extracting, reconciling, and unshortening urls",
   long_description = description,
   classifiers=[
@@ -47,6 +43,9 @@ setup(
   namespace_packages=[],
   include_package_data=False,
   zip_safe=False,
-  install_requires=install_reqs,
+  install_requires=[
+    "lxml==3.3.5",
+    "tldextract==1.4"
+  ]
   tests_require=[]
 )
