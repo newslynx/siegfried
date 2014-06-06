@@ -1,8 +1,8 @@
 ![travis-img](https://travis-ci.org/newslynx/siegfried.svg)
 
-# siegfried
-
-_Tools for taming lynx._
+siegfried
+======================
+Tools for taming lynx.
 
 ## Install
 ```
