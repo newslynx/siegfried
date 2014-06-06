@@ -6,6 +6,7 @@ Most of the code here was extracted from newspaper's module for cleaning urls.
 From: https://github.com/codelucas/newspaper/blob/master/newspaper/urls.py
 """
 import requests
+import logging
 import re
 import tldextract
 import lxml.html 
@@ -18,6 +19,11 @@ from urlparse import (
 
 from regex import *
 
+# suppress tld logging
+tld_log = logging.getLogger('tldextract')
+tld_log.setLevel(logging.CRITICAL)
+
+# url chunks
 ALLOWED_TYPES = [
   'html', 'htm', 'md', 'rst', 'aspx', 'jsp', 'rhtml', 'cgi',
   'xhtml', 'jhtml', 'asp'
