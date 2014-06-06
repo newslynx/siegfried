@@ -456,7 +456,7 @@ def _unshorten(url):
   # return whatever we have
   return url
 
-def unshorten(short_url, max_attempts = 5, raise_err=False):
+def unshorten_url(short_url, max_attempts = 5, raise_err=False):
   success = False
   attempts = 0
 

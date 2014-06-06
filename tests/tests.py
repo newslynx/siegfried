@@ -94,7 +94,7 @@ class Tests(unittest.TestCase):
     for c in cases:
       assert(is_short_url(c))
 
-  def test_unshorten(self):
+  def test_unshorten_url(self):
     cases = [
       ('http://nyti.ms/1oxYm3e',
       'http://www.nytimes.com/video/movies/100000002920951/anatomy-8216the-fault-in-our-stars8217.html'),
@@ -107,7 +107,7 @@ class Tests(unittest.TestCase):
     for c in cases:
       test, truth = c 
       try:
-        test = prepare_url(unshorten(test))
+        test = prepare_url(unshorten_url(test))
         assert(test == truth)
       except AssertionError:
         print "failed on %s" % test 
