@@ -1,6 +1,9 @@
 from setuptools import setup, find_packages
 from pip.req import parse_requirements
 
+def readme(fname):
+  return open(os.path.join(os.path.dirname(__file__), fname)).read()
+
 install_reqs = [
   str(ir.req) for ir in parse_requirements('requirements.txt')
   ] 
@@ -9,7 +12,7 @@ setup(
   name='newslynx-url',
   version='0.0.1',
   description="tools for parsing, extracting, reconciling, and unshortening urls",
-  long_description="",
+  long_description = readme('readme.md'),
   classifiers=[
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
