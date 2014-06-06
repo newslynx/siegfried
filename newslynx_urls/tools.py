@@ -288,8 +288,9 @@ def is_article_url(url, pattern = None):
 
   # optionally apply regex
   if pattern:
-    pattern = build_regex(pattern)
-    return pattern.match(url)
+    pattern = compile_regex(pattern)
+    if pattern.match(url):
+      return True
 
   # 11 chars is shortest valid url length, eg: http://x.co
   if url is None or len(url) < 11:

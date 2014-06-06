@@ -18,22 +18,22 @@ nosetests
 ## Usage
 
 This module contains various methods that are used throughout `newslnyx-core`.
-but the main functions are `unshorten_url`, `is_article`, and `prepare_url`:
+but the main functions are `unshorten_url`, `is_article_url`, and `prepare_url`:
 
 ```python
 from newslynx_urls import (
-  unshorten_url, is_article, prepare_url
+  unshorten_url, is_article_url, prepare_url
 )
 
 print unshorten_url('bit.ly/1j3SrUC')
-# http://towcenter.org/blog/tow-fellows-brian-abelson-and-michael-keller-to-study-the-impact-of-journalism
+# http://towcenter.org/blog/tow-fellows-brian-abelson-and-michael-keller-to-study-the-impact-of-journalism/
 
-print is_article(
+print is_article_url(
   'http://towcenter.org/blog/tow-fellows-brian-abelson-and-michael-keller-to-study-the-impact-of-journalism'
   )
 # True
 
-print is_article(
+print is_article_url(
   'http://towcenter.org/blog/tow-fellows-brian-abelson-and-michael-keller-to-study-the-impact-of-journalism',
   pattern = r'.*towcenter\.org/blog/.*'
 )
@@ -41,7 +41,7 @@ print is_article(
 
 import re
 pattern = re.compile(r'.*towcenter\.org/blog/.*')
-print is_article(
+print is_article_url(
   'http://towcenter.org/blog/tow-fellows-brian-abelson-and-michael-keller-to-study-the-impact-of-journalism',
   pattern = pattern
 )
