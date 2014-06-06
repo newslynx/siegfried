@@ -46,6 +46,6 @@ setup(
   install_requires=[
     "lxml==3.3.5",
     "tldextract==1.4"
-  ]
+  ],
   tests_require=[]
 )
