@@ -2,13 +2,13 @@ from setuptools import setup, find_packages
 from pip.req import parse_requirements
 import os 
 
-try:
-   import pypandoc
-   fp = os.path.join(os.path.dirname('readme.md'), fname)
-   description = pypandoc.convert(fp, 'rst')
-except (IOError, ImportError):
-   description = ''
 
+readme = os.path.join(os.path.dirname(__file__), 'readme.md')
+try:
+  import pypandoc
+  description = pypandoc.convert(readme, 'rst')
+except IOError, ImportError:
+  description = open(readme, 'rb').read()
 
 install_reqs = [
   str(ir.req) for ir in parse_requirements('requirements.txt')
@@ -16,7 +16,7 @@ install_reqs = [
 
 setup(
   name='newslynx-url',
-  version='0.0.3',
+  version='0.0.4',
   description="tools for parsing, extracting, reconciling, and unshortening urls",
   long_description = description,
   classifiers=[
