@@ -18,7 +18,7 @@ try:
   import pypandoc
   description = pypandoc.convert(readme, 'rst')
 except (IOError, ImportError):
-  description = open(readme, 'rb').read()
+  description = ""
 
 # get requirements
 install_reqs = [
