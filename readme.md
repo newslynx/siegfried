@@ -20,7 +20,7 @@ This module contains various methods that are used throughout `newslnyx-core`.
 but the main functions are `unshorten_url`, `is_article`, and `prepare_url`:
 
 ```python
-from newslynx_core import (
+from newslynx_urls import (
   unshorten_url, is_article, prepare_url
 )
 print unshorten_url('bit.ly/1j3SrUC')
