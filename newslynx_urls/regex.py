@@ -1,5 +1,17 @@
 import re
 
+# hack to check for regex type
+RE_TYPE = type(re.compile(r''))
+
+def compile_regex(r):
+  """
+  a helper for building a regex or not.
+  """
+  if isinstance(r, RE_TYPE):
+    return r
+  else:
+    return re.compile(r)
+
 # this regex was brought to you by django!
 re_abs_url = re.compile(r"""
   ^(?:http|ftp)s?://                                                                 # http:// or https://

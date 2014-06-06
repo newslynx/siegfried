@@ -251,7 +251,7 @@ def is_valid_url(url):
   """
   return len(url) > 11 and 'localhost' not in url
 
-def is_article_url(url):
+def is_article_url(url, pattern = None):
   """  
   Check if a url looks like it's an article.
 
@@ -283,10 +283,14 @@ def is_article_url(url):
   We also filter out articles with a subdomain or first degree path
   on a registered bad keyword.
   """
-  # If we are testing this method in the testing suite, we actually
-  # need to preprocess the url like we do in the article's constructor!
+  # prepare the url
   url = prepare_url(url)
-  print url
+
+  # optionally apply regex
+  if pattern:
+    pattern = build_regex(pattern)
+    return pattern.match(url)
+
   # 11 chars is shortest valid url length, eg: http://x.co
   if url is None or len(url) < 11:
     return False
