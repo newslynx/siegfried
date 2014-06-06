@@ -16,6 +16,7 @@ nosetests
 ```
 
 ## Usage
+
 This module contains various methods that are used throughout `newslnyx-core`.
 but the main functions are `unshorten_url`, `is_article`, and `prepare_url`:
 
