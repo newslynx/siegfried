@@ -24,7 +24,7 @@ except (IOError, ImportError):
 # setup
 setup(
   name='siegfried',
-  version='0.0.4',
+  version='0.0.5',
   description="Tools for taming links.",
   long_description = description,
   classifiers=[
