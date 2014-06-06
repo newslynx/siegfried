@@ -2,21 +2,33 @@ from setuptools import setup, find_packages
 from pip.req import parse_requirements
 import os 
 
+# hack for workings with pandocs
+import codecs 
+try: 
+    codecs.lookup('mbcs') 
+except LookupError: 
+    ascii = codecs.lookup('ascii') 
+    func = lambda name, enc=ascii: {True: enc}.get(name=='mbcs') 
+    codecs.register(func) 
 
+# install readme
 readme = os.path.join(os.path.dirname(__file__), 'readme.md')
+
 try:
   import pypandoc
   description = pypandoc.convert(readme, 'rst')
 except IOError, ImportError:
   description = open(readme, 'rb').read()
 
+# get requirements
 install_reqs = [
   str(ir.req) for ir in parse_requirements('requirements.txt')
   ] 
 
+# setup
 setup(
   name='newslynx-url',
-  version='0.0.4',
+  version='0.0.5',
   description="tools for parsing, extracting, reconciling, and unshortening urls",
   long_description = description,
   classifiers=[
