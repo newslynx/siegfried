@@ -1,11 +1,11 @@
-![travis-img](https://travis-ci.org/newslynx/newslynx-url.svg)
-newslynx-url
+![travis-img](https://travis-ci.org/newslynx/siegfried.svg)
+siegfried
 ========
-A newslynx-opinionated collection of utilities for dealing with urls.
+Tools for taming links.
 
 ## Install
 ```
-pip install newslynx-url
+pip install siegfried
 ```
 
 ## Test
@@ -16,11 +16,11 @@ nosetests
 
 ## Usage
 
-This module contains various methods that are used throughout `newslnyx-core`.
+This module contains various methods that are used throughout `newslnyx`.
 but the main functions are `unshorten_url`, `is_article_url`, and `prepare_url`:
 
 ```python
-from newslynx_url import (
+from siegfried import (
   unshorten_url, is_article_url, prepare_url
 )
 

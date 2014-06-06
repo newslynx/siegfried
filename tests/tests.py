@@ -1,7 +1,7 @@
 import unittest
 import os
 
-from newslynx_url import *
+from siegfried import *
 
 TEST_DIR = os.path.abspath(os.path.dirname(__file__))
 

@@ -23,9 +23,9 @@ except (IOError, ImportError):
 
 # setup
 setup(
-  name='newslynx-url',
-  version='0.1.0',
-  description="Tools for parsing, extracting, reconciling, and unshortening urls",
+  name='siegfried',
+  version='0.0.1',
+  description="Tools for taming links.",
   long_description = description,
   classifiers=[
     "Development Status :: 3 - Alpha",
@@ -37,7 +37,7 @@ setup(
   keywords='urls',
   author='Brian Abelson',
   author_email='brian@newslynx.org',
-  url='http://github.com/newslynx/newslynx-urls',
+  url='http://github.com/newslynx/siegfried',
   license='MIT',
   packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
   namespace_packages=[],
