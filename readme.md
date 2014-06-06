@@ -29,6 +29,6 @@ print unshorten_url('bit.ly/1j3SrUC')
 print is_article('http://towcenter.org/blog/tow-fellows-brian-abelson-and-michael-keller-to-study-the-impact-of-journalism')
 # True
 
-print prepare_url('http://towcenter.org/blog/tow-fellows-brian-abelson-and-michael-keller-to-study-the-impact-of-journalism/?q=lfjad$f=lkfdjsal')
+print prepare_url('http://towcenter.org/blog/tow-fellows-brian-abelson-and-michael-keller-to-study-the-impact-of-journalism/?q=lfjad&f=lkfdjsal')
 # http://towcenter.org/blog/tow-fellows-brian-abelson-and-michael-keller-to-study-the-impact-of-journalism
 ```
