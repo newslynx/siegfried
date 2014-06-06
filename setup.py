@@ -17,7 +17,7 @@ readme = os.path.join(os.path.dirname(__file__), 'readme.md')
 try:
   import pypandoc
   description = pypandoc.convert(readme, 'rst')
-except IOError, ImportError:
+except (IOError, ImportError):
   description = open(readme, 'rb').read()
 
 # get requirements
