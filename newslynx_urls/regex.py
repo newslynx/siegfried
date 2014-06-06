@@ -147,4 +147,4 @@ re_short_domains = re.compile(r"""
   (^cl\.ly$)|
   (^thkpr\.gs$)|
   (^huff\.to$)
-  """, flags=re.VERBOSE)
+  """, flags=re.VERBOSE | re.IGNORECASE)
