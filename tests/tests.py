@@ -45,7 +45,12 @@ class Tests(unittest.TestCase):
       "https://app.enigma.io/search/source/us.gov.dol.oflc.h2a"
       ])
     test = set(urls_from_html(html, domain="https://app.enigma.io/"))
-    assert(test == truth)
+    try:
+      assert(test == truth)
+    except AssertionError:
+      print test 
+      print truth
+      raise AssertionError
 
   def test_get_domain(self):
     case = 'http://www.nytimes.com/2014/06/06/business/gm-ignition-switch-internal-recall-investigation-report.html?hp&_r=0'

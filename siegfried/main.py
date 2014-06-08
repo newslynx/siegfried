@@ -9,7 +9,7 @@ import requests
 import logging
 import re
 import tldextract
-import lxml.html 
+from bs4 import BeautifulSoup
 from hashlib import sha1
 import httplib
 from copy import copy
@@ -68,12 +68,16 @@ def urls_from_html(html, domain=None, dedupe=True):
   """
   final_urls = []
 
-  tree = lxml.html.fromstring(html)
+  soup = BeautifulSoup(html)
 
-  for href in tree.xpath('//a/@href'):
-    if not is_abs_url(href):
-      if domain:
-        href = urljoin(domain, href)
+  for a in soup.find_all('a'):
+    href = a.attrs.get('href', None)
+    print
+    if href:
+      if not is_abs_url(href):
+        if domain:
+          href = urljoin(domain, href)
+          
       final_urls.append(href)
       
   if dedupe:

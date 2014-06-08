@@ -16,7 +16,7 @@ readme = os.path.join(os.path.dirname(__file__), 'readme.md')
 
 try:
   import pypandoc
-  description = pypandoc.convert(readme, 'rst')
+  description = pypandoc.convert(readme, 'rst', format='md')
 except (IOError, ImportError):
   description = ""
 
@@ -24,8 +24,8 @@ except (IOError, ImportError):
 # setup
 setup(
   name='siegfried',
-  version='0.0.6',
-  description="Tools for taming links.",
+  version='0.0.9',
+  description="Tools for taming lynx.",
   long_description = description,
   classifiers=[
     "Development Status :: 3 - Alpha",
@@ -44,9 +44,10 @@ setup(
   include_package_data=False,
   zip_safe=False,
   install_requires=[
-    "lxml==3.3.5",
+    "beautifulsoup4==4.3.2",
     "requests==2.3.0",
-    "tldextract==1.4"
+    "tldextract==1.4",
+    "wsgiref==0.1.2"
   ],
   tests_require=[]
 )
