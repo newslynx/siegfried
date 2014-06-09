@@ -444,7 +444,11 @@ def long_url(url):
       'format' : 'json'
       }
     )
-  return r.json().get('long-url', url)
+  if r.status_code = 200:
+    return r.json().get('long-url', url)
+
+  ## DONT FAIL
+  return url
 
 def _unshorten(url):
   """
@@ -463,6 +467,7 @@ def _unshorten(url):
   # method 3, use requests
   r = requests.get(url)
   if r.status_code == 200:
+    url = r.url
     if not is_short_url(url):
       return url
 
