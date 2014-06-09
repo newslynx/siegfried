@@ -444,7 +444,7 @@ def long_url(url):
       'format' : 'json'
       }
     )
-  if r.status_code = 200:
+  if r.status_code == 200:
     return r.json().get('long-url', url)
 
   ## DONT FAIL
