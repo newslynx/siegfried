@@ -102,7 +102,7 @@ def remove_args(url, keep_params=(), frags=False):
 
   return urlunsplit(parsed[:3] + (filtered_query,) + frag)
 
-def redirect_back(url, source_domain):
+def redirect_back(url, source_domain=None):
   """
   Some sites like Pinterest have api's that cause news
   args to direct to their site with the real news url as a
@@ -255,7 +255,7 @@ def url_to_filetype(abs_url):
 
 def is_valid_url(url):
   """
-  method just for checking weird results from `get_location` in `unshorten`
+  method just for checking weird results from `get_location` in `_unshorten`
   """
   return len(url) > 11 and 'localhost' not in url
 
@@ -391,7 +391,7 @@ def is_article_url(url, pattern = None):
 
 # SHORT DOMAINS #
 
-def is_short_url(url, pattern=None):
+def is_short_url(url, pattern = None):
   """
   test url for short links,
   allow str / list / retype's and passing in 
@@ -399,9 +399,10 @@ def is_short_url(url, pattern=None):
   """
   # pass in specific regexes
   if pattern:
+    pattern = compile_regex(pattern)
     # only return if we match the custom domain, never fail
     # because of this
-    if re.search(pattern, url):
+    if pattern.match(url):
       return True
 
   # test against bitly-ish short url pattern
@@ -450,31 +451,31 @@ def long_url(url):
   ## DONT FAIL
   return url
 
-def _unshorten(url):
+def _unshorten(url, pattern = None):
   """
   tri-method approach to unshortening a url
   """
   # method 1, get location
   url = get_location(url)
-  if not is_short_url(url):
+  if not is_short_url(url, pattern = pattern):
     return url 
 
   # method 2, use longurl.com
   url = long_url(url)
-  if not is_short_url(url):
+  if not is_short_url(url, pattern = pattern):
     return url
 
   # method 3, use requests
   r = requests.get(url)
   if r.status_code == 200:
     url = r.url
-    if not is_short_url(url):
+    if not is_short_url(url, pattern = pattern):
       return url
 
   # return whatever we have
   return url
 
-def unshorten_url(short_url, max_attempts = 5, raise_err=False):
+def unshorten_url(short_url, pattern = None, max_attempts = 5, raise_err=False):
   success = False
   attempts = 0
 
@@ -486,9 +487,9 @@ def unshorten_url(short_url, max_attempts = 5, raise_err=False):
   
   # recursively unshorten
   while attempts < max_attempts:
-    url = _unshorten(url)
+    url = _unshorten(url, pattern = pattern)
     attempts += 1
-    if not is_short_url(url) and is_valid_url(url):
+    if not is_short_url(url, pattern = pattern) and is_valid_url(url):
       success = True
       break
 
