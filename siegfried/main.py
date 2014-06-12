@@ -427,8 +427,8 @@ def get_location(url):
     response = h.getresponse()
     if response.status/100 == 3 and response.getheader('Location'):
       return response.getheader('Location')
-    # else:
-    #   return url
+    else:
+      return url
 
   # DONT FAIL
   except:
@@ -462,7 +462,7 @@ def _unshorten(url, pattern = None):
 
   # method 2, use longurl.com
   url = long_url(url)
-  if not is_short_url(url, pattern = pattern):
+  if not url and is_short_url(url, pattern = pattern):
     return url
 
   # method 3, use requests

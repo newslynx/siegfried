@@ -20,7 +20,6 @@ try:
 except (IOError, ImportError):
   description = ""
 
-
 # setup
 setup(
   name='siegfried',

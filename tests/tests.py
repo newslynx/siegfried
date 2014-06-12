@@ -107,7 +107,8 @@ class Tests(unittest.TestCase):
       'http://www.nytimes.com/video/movies/100000002920951/anatomy-8216the-fault-in-our-stars8217.html'),   
       ('http://bit.ly/1kzIQWw',
        'http://www.fromscratchradio.com/show/marc-dacosta'),
-      ('bit.ly/aaaaaa', 'http://bit.ly/aaaaaa')
+      ('bit.ly/aaaaaa', 'http://bit.ly/aaaaaa'),
+      ('http://ow.ly/i/5OTms', 'http://ow.ly/i/5OTms')
       ]
     for c in cases:
       test, truth = c 
