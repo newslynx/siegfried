@@ -6,6 +6,7 @@ Most of the code here was extracted from newspaper's module for cleaning urls.
 From: https://github.com/codelucas/newspaper/blob/master/newspaper/urls.py
 """
 import requests
+from requests import ConnectionError
 import logging
 import re
 import tldextract
@@ -466,11 +467,15 @@ def _unshorten(url, pattern = None):
     return url
 
   # method 3, use requests
-  r = requests.get(url)
-  if r.status_code == 200:
-    url = r.url
-    if not is_short_url(url, pattern = pattern):
-      return url
+  try:
+    r = requests.get(url)
+  except ConnectionError:
+    return url 
+  else:
+    if r.status_code == 200:
+      url = r.url
+      if not is_short_url(url, pattern = pattern):
+        return url
 
   # return whatever we have
   return url
