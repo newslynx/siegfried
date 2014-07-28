@@ -143,11 +143,6 @@ def prepare_url(url, source_url=None):
 
   # remove index.html
   proper_url = re_index_html.sub('', proper_url)
-
-  # remove trailing slashes
-  if proper_url.endswith('/'):
-    proper_url = proper_url[:-1]
-
   return proper_url
 
 def get_domain(abs_url, **kwargs):
