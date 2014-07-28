@@ -43,10 +43,10 @@ setup(
   include_package_data=False,
   zip_safe=False,
   install_requires=[
-    "beautifulsoup4==4.3.2",
-    "requests==2.3.0",
-    "tldextract==1.4",
-    "wsgiref==0.1.2"
+    "beautifulsoup4>=4.3.2",
+    "requests>=2.3.0",
+    "tldextract>=1.4",
+    "wsgiref>=0.1.2"
   ],
   tests_require=[]
 )

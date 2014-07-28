@@ -452,7 +452,7 @@ def long_url(url):
   ## DONT FAIL
   return url
 
-def bitly_warning(url):
+def bypass_bitly_warning(url):
 
   try:
     r = requests.get(url)
@@ -463,6 +463,8 @@ def bitly_warning(url):
       soup = BeautifulSoup(r.content, 'html.parser')
       a = soup.find('a', {'id': 'clickthrough'})
       return a.attrs.get('href')
+
+  return url
 
 def _unshorten(url, pattern = None):
   """
@@ -489,8 +491,9 @@ def _unshorten(url, pattern = None):
       if not is_short_url(url, pattern = pattern):
         return url
 
+  # check if there's a bitly warning.
   if re_bitly_warning.search(url):
-    url = bitly_warning(url)
+    url = bypass_bitly_warning(url)
 
   # return whatever we have
   return url
