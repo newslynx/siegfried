@@ -453,10 +453,16 @@ def long_url(url):
   return url
 
 def bitly_warning(url):
-  r = requests.get(url)
-  soup = BeautifulSoup(r.content)
-  a = soup.find('a', {'id': 'clickthrough'})
-  return a.attrs.get('href')
+
+  try:
+    r = requests.get(url)
+  except ConnectionError:
+    return url 
+  else:
+    if r.status_code == 200:
+      soup = BeautifulSoup(r.content, 'html.parser')
+      a = soup.find('a', {'id': 'clickthrough'})
+      return a.attrs.get('href')
 
 def _unshorten(url, pattern = None):
   """
