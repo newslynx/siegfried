@@ -59,6 +59,7 @@ re_www = re.compile(r'^www\.')
 re_slug = re.compile(r'[^\sA-Za-z0-9]+')
 re_slug_end = re.compile(r'(^[\-]+)|([\-]+)$')
 re_url = re.compile(r'https?://[^\s\'\"]+')
+re_bitly_warning = re.compile(r'https?://bitly\.com/a/warning')
 
 # a big ugly list of short_urls
 re_short_domains = re.compile(r"""

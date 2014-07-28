@@ -452,6 +452,12 @@ def long_url(url):
   ## DONT FAIL
   return url
 
+def bitly_warning(url):
+  r = requests.get(url)
+  soup = BeautifulSoup(r.content)
+  a = soup.find('a', {'id': 'clickthrough'})
+  return a.attrs.get('href')
+
 def _unshorten(url, pattern = None):
   """
   tri-method approach to unshortening a url
@@ -476,6 +482,9 @@ def _unshorten(url, pattern = None):
       url = r.url
       if not is_short_url(url, pattern = pattern):
         return url
+
+  if re_bitly_warning.search(url):
+    url = bitly_warning(url)
 
   # return whatever we have
   return url
@@ -504,7 +513,6 @@ def unshorten_url(short_url, pattern = None, max_attempts = 5, raise_err=False):
 
   # otherwise fallback to err / default return
   else:
-    print ""
     if raise_err:
       msg = "Failed to unshorten: %s" % short_url
       raise UnshortenError(msg)
