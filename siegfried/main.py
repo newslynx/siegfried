@@ -460,7 +460,7 @@ def bypass_bitly_warning(url):
     return url 
   else:
     if r.status_code == 200:
-      soup = BeautifulSoup(r.content, 'html.parser')
+      soup = BeautifulSoup(r.content)
       a = soup.find('a', {'id': 'clickthrough'})
       return a.attrs.get('href')
 
