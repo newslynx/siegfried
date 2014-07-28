@@ -23,7 +23,7 @@ except (IOError, ImportError):
 # setup
 setup(
   name='siegfried',
-  version='0.2.1',
+  version='0.2.2',
   description="Tools for taming lynx.",
   long_description = description,
   classifiers=[

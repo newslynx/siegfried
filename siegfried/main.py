@@ -434,15 +434,22 @@ def long_url(url):
   """
   hit long url's api to unshorten a url
   """
-  r = requests.get(
-    'http://api.longurl.org/v2/expand',
-    params = {
-      'url'    :  url,
-      'format' : 'json'
-      }
-    )
-  if r.status_code == 200:
-    return r.json().get('long-url', url)
+  
+  try:
+    r = requests.get(
+      'http://api.longurl.org/v2/expand',
+      params = {
+        'url'    :  url,
+        'format' : 'json'
+        }
+      )
+  
+  except ConnectionError:
+    return url 
+  
+  else:
+    if r.status_code == 200:
+      return r.json().get('long-url', url)
 
   ## DONT FAIL
   return url
@@ -470,6 +477,12 @@ def _unshorten(url, pattern = None):
   if not is_short_url(url, pattern = pattern):
     return url 
 
+  # check if there's a bitly warning.
+  if re_bitly_warning.search(url):
+    url = bypass_bitly_warning(url)
+    if not is_short_url(url, pattern = pattern):
+      return url
+
   # method 2, use longurl.com
   url = long_url(url)
   if not url and is_short_url(url, pattern = pattern):
@@ -485,10 +498,6 @@ def _unshorten(url, pattern = None):
       url = r.url
       if not is_short_url(url, pattern = pattern):
         return url
-
-  # check if there's a bitly warning.
-  if re_bitly_warning.search(url):
-    url = bypass_bitly_warning(url)
 
   # return whatever we have
   return url
