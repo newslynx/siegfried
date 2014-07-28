@@ -82,7 +82,7 @@ class Tests(unittest.TestCase):
       ('http://www.nytimes.com/2014/06/06/business/gm-ignition-switch-internal-recall-investigation-report.html?hp&_r=0',
        'http://www.nytimes.com/2014/06/06/business/gm-ignition-switch-internal-recall-investigation-report.html'),
       ('http://www.nytimes.com/2014/06/06/business/gm-ignition-switch-internal-recall-investigation-report/index.html',
-        'http://www.nytimes.com/2014/06/06/business/gm-ignition-switch-internal-recall-investigation-report')
+        'http://www.nytimes.com/2014/06/06/business/gm-ignition-switch-internal-recall-investigation-report/')
     ]
     for c in cases:
       test, truth = c 
@@ -107,7 +107,7 @@ class Tests(unittest.TestCase):
        'http://www.fromscratchradio.com/show/marc-dacosta'),
       ('bit.ly/aaaaaa', 'http://bit.ly/aaaaaa'),
       ('http://ow.ly/i/5OTms', 'http://ow.ly/i/5OTms'),
-      ('http://j.mp/1jBOKo1', 'http://earthfix.info/portables')
+      ('http://j.mp/1jBOKo1', 'http://earthfix.info/portables/')
       ]
     for c in cases:
       test, truth = c 
