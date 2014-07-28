@@ -10,12 +10,10 @@ class Tests(unittest.TestCase):
   def test_urls_from_string(self):
     string = """
       http://www.nytimes.com/2014/06/06/business/gm-ignition-switch-internal-recall-investigation-report.html?hp&_r=0
-      bitly.com/lfsaff
       http://bitly.com/lfsaff
       http://www.nytimes.com/2014/06/06/business/gm-ignition-switch-internal-recall-investigation-report.html?hp&_r=0
       """
     truth = set([
-      "bitly.com/lfsaff",
       "http://bitly.com/lfsaff", 
       "http://www.nytimes.com/2014/06/06/business/gm-ignition-switch-internal-recall-investigation-report.html?hp&_r=0"
       ])
