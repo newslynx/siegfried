@@ -5,11 +5,11 @@ import os
 # hack for workings with pandocs
 import codecs 
 try: 
-    codecs.lookup('mbcs') 
+  codecs.lookup('mbcs') 
 except LookupError: 
-    ascii = codecs.lookup('ascii') 
-    func = lambda name, enc=ascii: {True: enc}.get(name=='mbcs') 
-    codecs.register(func) 
+  ascii = codecs.lookup('ascii') 
+  func = lambda name, enc=ascii: {True: enc}.get(name=='mbcs') 
+  codecs.register(func) 
 
 # install readme
 readme = os.path.join(os.path.dirname(__file__), 'readme.md')
@@ -23,7 +23,7 @@ except (IOError, ImportError):
 # setup
 setup(
   name='siegfried',
-  version='0.1.4',
+  version='0.1.6',
   description="Tools for taming lynx.",
   long_description = description,
   classifiers=[
