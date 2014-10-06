@@ -73,7 +73,6 @@ def urls_from_html(html, domain=None, dedupe=True):
 
   for a in soup.find_all('a'):
     href = a.attrs.get('href', None)
-    print
     if href:
       if not is_abs_url(href):
         if domain:
