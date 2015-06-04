@@ -3,6 +3,8 @@ siegfried
 ======================
 Tools for taming lynx.
 
+**NOTE**: All functionality of this library has been improved upon and ported to [NewsLynx V2](http://github.com/newslynx/newslynx)
+
 ## Install
 ```
 pip install siegfried
